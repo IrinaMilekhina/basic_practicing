@@ -5,8 +5,8 @@ seconds_per_minute = 60
 duration = int(input("Put duration in seconds here \n"))
 
 days = duration // seconds_per_day
-hours = (duration - days * seconds_per_day) // seconds_per_hour
-minutes = (duration - days * seconds_per_day - hours * seconds_per_hour) // seconds_per_minute
+hours = duration % seconds_per_day // seconds_per_hour
+minutes = duration % seconds_per_hour // seconds_per_minute
 seconds = duration % seconds_per_minute
 
 print(str(days) + " d. " + str(hours) + " h. " + str(minutes) + " m. " + str(seconds) + " s.")
