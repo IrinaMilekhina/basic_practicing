@@ -6,7 +6,6 @@ c. до суток: <h> час <m> мин <s> сек;
 d. * в остальных случаях: <d> дн <h> час <m> мин <s> сек.
 '''
 
-
 seconds_per_day = 86400
 seconds_per_hour = 3600
 seconds_per_minute = 60
@@ -19,7 +18,3 @@ minutes = duration % seconds_per_hour // seconds_per_minute
 seconds = duration % seconds_per_minute
 
 print(str(days) + " d. " + str(hours) + " h. " + str(minutes) + " m. " + str(seconds) + " s.")
-
-# тут бы я фиганула f-string, но по курсу мы еще не знаем этого
-# в методичке говорится, что константы прнято печатать в верхнем регистре. Значит ли это, что лучше делать
-# SECONDS_PER_DAY и тд? И часто ли так делают на работе?
