@@ -10,60 +10,57 @@ c. * Решить задачу под пунктом b, не создавая н
 list_till = 1000    # до какого числа составлять список
 raising_power = 3    # степень возведения чисел в списке
 summ_divider = 7    # число, на которое должна нацело делиться сумма цифр
-added_amount = 17    # число, которое надо добавить к эелемнтам списка
+added_amount = 17    # число, которое надо добавить к эелементам списка
 number = 0
 odd_list = []
 iterated_list = []
-idx = 0
-internal_summ = 0
 desired_summ = 0
 
 # forming list of powered odd numbers in range list_till
-for number in range(list_till):
-    tmp = number % 2 > 0
-    if tmp is True:
-        odd_list.append(number ** raising_power)
-    number += 1
+for number in range(1, list_till + 1, 2):
+    odd_list.append(number ** raising_power)
 
 print("Desired list of powered odd numbers: " + str(odd_list))
 
 # finding desired summ in point A
-for idx in range(len(odd_list)):
-    number = odd_list[idx]
-    while number > 0:
-        internal_summ += number % 10
-        number //= 10
+for i, v in enumerate(odd_list):
+    internal_summ = 0
+    while v > 0:
+        internal_summ += v % 10
+        v //= 10
     if internal_summ % summ_divider == 0:
-        desired_summ += odd_list[idx]
+        desired_summ += odd_list[i]
 
 print("Desired summ: " + str(desired_summ) + "\n")
 
 # iterating the list and again finding desired summ
-internal_summ = 0
 desired_summ = 0
-for idx in range(len(odd_list)):
-    iterated_list.append(odd_list[idx] + added_amount)
-    number = iterated_list[idx]
-    while number > 0:
-        internal_summ += number % 10
-        number //= 10
+for m in odd_list:
+    iterated_list.append(m + added_amount)
+
+for i, v in enumerate(iterated_list):
+    internal_summ = 0
+    while v > 0:
+        internal_summ += v % 10
+        v //= 10
     if internal_summ % summ_divider == 0:
-        desired_summ += iterated_list[idx]
+        desired_summ += iterated_list[i]
 
 print("New list after iteration: " + str(iterated_list))
 print("Desired summ after list iteration: " + str(desired_summ) + "\n")
 
 # iterating the list without creating a new one and again finding desired summ
-internal_summ = 0
 desired_summ = 0
-for idx in range(len(odd_list)):
-    odd_list[idx] += added_amount
-    number = odd_list[idx]
-    while number > 0:
-        internal_summ += number % 10
-        number //= 10
+for i in range(len(odd_list)):
+    odd_list[i] += 17
+
+for i, v in enumerate(odd_list):
+    internal_summ = 0
+    while v > 0:
+        internal_summ += v % 10
+        v //= 10
     if internal_summ % summ_divider == 0:
-        desired_summ += odd_list[idx]
+        desired_summ += odd_list[i]
 
 print("List after iteration: " + str(odd_list))
 print("Desired summ after list iteration: " + str(desired_summ))
