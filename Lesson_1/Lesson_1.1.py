@@ -18,3 +18,19 @@ minutes = duration % seconds_per_hour // seconds_per_minute
 seconds = duration % seconds_per_minute
 
 print(str(days) + " d. " + str(hours) + " h. " + str(minutes) + " m. " + str(seconds) + " s.")
+
+# second realisation variant using lists
+time_list = [60, 60, 24, 24]
+word_list = [' s.', ' m.', ' h.', ' d.']
+result_list = []
+
+duration = int(input("Put duration in seconds here \n"))
+
+for i, v in enumerate(time_list):
+    result_list.append(str(duration % v) + word_list[i])
+    duration //= v
+
+len_list = len(result_list) - 1
+while len_list >= 0:
+    print(result_list[len_list], end=" ")
+    len_list -= 1
