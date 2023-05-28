@@ -33,7 +33,6 @@ sorted(price_list, reverse=True)
 print(id(sorted(price_list, reverse=True)), ', '.join(map(str, sorted(price_list, reverse=True))))
 
 # D continuing C&B
-priciest = 5    # количество самых дорогих товаров
+priciest = 5  # количество самых дорогих товаров
 
-price_list.sort(reverse=True)
-print('Самые дорогие товары: ', ', '.join(map(str, price_list[:priciest])))
+print('Самые дорогие товары: ', ', '.join(map(str, price_list[:-(priciest + 1):-1])))
