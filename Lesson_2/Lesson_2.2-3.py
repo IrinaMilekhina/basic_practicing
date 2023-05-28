@@ -18,11 +18,11 @@ new_phrase_list = []
 for i, v in enumerate(phrase_list):
     if v.isnumeric():
         new_phrase_list.extend(['"', f'{int(phrase_list[i]):02d}', '"'])
-    elif v.startswith('+' or '-'):
+    elif v.startswith('+') or v.startswith('-'):
         internal_list = list(v)
         number_sign = internal_list.pop(0)
-        ''.join(internal_list)
-        new_phrase_list.extend(['"', number_sign + f'{int(phrase_list[i]):02d}', '"'])
+        internal_number = ''.join(internal_list)
+        new_phrase_list.extend(['"', number_sign + f'{int(internal_number):02d}', '"'])
     else:
         new_phrase_list.append(phrase_list[i])
 
@@ -35,7 +35,7 @@ for i, v in enumerate(phrase_list):
     if v.isnumeric():
         phrase_list[i] = f'{int(phrase_list[i]):02d}'
         phrase_list.insert(i + 1, '"')
-    if v.startswith('+' or '-'):
+    if v.startswith('-') or v.startswith('+'):
         internal_list = list(v)
         number_sign = internal_list.pop(0)
         internal_number = ''.join(internal_list)
@@ -45,7 +45,7 @@ for i, v in enumerate(phrase_list):
 phrase_list.reverse()
 
 for i, v in enumerate(phrase_list):
-    if v.isnumeric() or v.startswith('+' or '-'):
+    if v.isnumeric() or v.startswith('+') or v.startswith('-'):
         phrase_list.insert(i + 1, '"')
 
 phrase_list.reverse()
