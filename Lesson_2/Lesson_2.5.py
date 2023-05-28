@@ -11,3 +11,29 @@ C. Создать новый список, содержащий те же цен
 D. Вывести цены пяти самых дорогих товаров. Сможете ли вывести цены этих товаров по
 возрастанию, написав минимум кода?
 '''
+# A
+price_list = [57.8, 46.51, 97, 77.9, 72.7, 3.99, 86.2, 1007, 963.01, 549.33, 98.29, 83.61, 555, 765.4, 198, 48.8,
+              222.22, 75, 333, 15.69]
+for i, v in enumerate(price_list):
+    internal_list = f'{price_list[i]:.2f}'.split('.')
+    price_list[i] = f'{internal_list[0]} руб {internal_list[1]} коп'
+
+print(', '.join(price_list))
+
+# B
+price_list = [57.8, 46.51, 97, 77.9, 72.7, 3.99, 86.2, 1007, 963.01, 549.33, 98.29, 83.61, 555, 765.4, 198, 48.8,
+              222.22, 75, 333, 15.69]
+
+print(id(price_list), ', '.join(map(str, price_list)))
+price_list.sort()
+print(id(price_list), ', '.join(map(str, price_list)))
+
+# C continuing B
+sorted(price_list, reverse=True)
+print(id(sorted(price_list, reverse=True)), ', '.join(map(str, sorted(price_list, reverse=True))))
+
+# D continuing C&B
+priciest = 5    # количество самых дорогих товаров
+
+price_list.sort(reverse=True)
+print('Самые дорогие товары: ', ', '.join(map(str, price_list[:priciest])))
