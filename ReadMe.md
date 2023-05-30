@@ -20,4 +20,11 @@ Summary
     - Lesson 2.4. Fetching and processing names from a list
     - Lesson 2.5. Extracting data from a list
 
+
+- Lesson 3:
+    - Lesson 3.1. Russian_english translation function for numbers 0-10
+    - Lesson 3.2. Same as previous but with register changes
+    - Lesson 3.3. Tesaurus function for names
+    - Lesson 3.4. Same as previous but also with surnames
+    - Lesson 3.5. Jokes generation function (kind of lame)
 ------------------
