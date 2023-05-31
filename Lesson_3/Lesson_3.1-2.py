@@ -53,6 +53,12 @@ print('\n', 'SECOND PART'.center(100, '-'))
 
 
 def num_translate_adv(number):
+    """
+    Translates english numbers from 0 to 10 into russian capitalized of not
+
+    :param number: number you want to translate. ONLY word form
+    :return: printed translation
+    """
     translations = {
         'zero': 'ноль',
         'one': 'один',
