@@ -39,10 +39,7 @@ def num_translate(number):
         'nine': 'девять',
         'ten': 'десять'
     }
-    if number in translations.keys():
-        print(translations[number])
-    else:
-        print('None')
+    print(translations.get(number))
 
 
 num_translate('zero')
@@ -74,12 +71,9 @@ def num_translate_adv(number):
     }
     if number.lower() in translations.keys():
         if number.istitle():
-            number = number.lower()
-            print(translations[number].capitalize())
-        elif number.islower():
-            print(translations[number])
+            print(translations.get(number.lower(), 'None').capitalize())
         else:
-            print('None')
+            print(translations.get(number, 'None'))
     else:
         print('None')
 
