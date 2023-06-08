@@ -36,7 +36,7 @@ def get_jokes(quantity=1):
 
 print(get_jokes(3))
 
-print('\n', 'SECOND PART'.center(100, '-'), '\n')
+print('\n', 'SECOND PART'.center(99, '-'), '\n')
 
 
 def get_jokes_flag(quantity=1, unique=False):
