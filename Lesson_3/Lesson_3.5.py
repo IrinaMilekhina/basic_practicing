@@ -25,56 +25,44 @@ def get_jokes(quantity=1):
     """
     Generates random 3-word jokes
 
-    :param quantity: How many lame jokes do you want
-    :return: Printed list of generated jokes in strings
+    :param quantity: how many lame jokes do you want
+    :return: list of generated jokes in strings
     """
     jokes = []
     for i in range(quantity):
         jokes.append(f'{choice(nouns)} {choice(adverbs)} {choice(adjectives)}')
-    print(jokes)
+    return jokes
 
 
-get_jokes(3)
+print(get_jokes(3))
 
-print('\n', 'SECOND PART'.center(100, '-'))
+print('\n', 'SECOND PART'.center(100, '-'), '\n')
 
 
 def get_jokes_flag(quantity=1, unique=False):
     """
     Generates random 3-word jokes
 
-    :param quantity: How many lame jokes do you want
-    :param unique: Word repeating: True or False. True - words can not be repeated; False - words can be repeated
-    :return: Printed list of generated jokes in strings
+    :param quantity: how many lame jokes do you want
+    :param unique: word repeating: True or False. True - words can not be repeated; False - words can be repeated
+    :return: list of generated jokes in strings
     """
     jokes = []
-    if unique is False:
-        for i in range(quantity):
-            jokes.append(f'{choice(nouns)} {choice(adverbs)} {choice(adjectives)}')
-    else:
-        if quantity not in range(len(nouns)+1):
-            print('Error. There can not be more jokes than elements in list of nouns')
+    limit_for_true = len(nouns) + 1
+    for i in range(quantity):
+        noun = choice(nouns)
+        adverb = choice(adverbs)
+        adjective = choice(adjectives)
+        jokes.append(f'{noun} {adverb} {adjective}')
+        if unique is True:
+            if quantity not in range(limit_for_true):
+                return 'Error. There can not be more jokes than elements in list of nouns'
+            nouns.remove(noun)
+            adverbs.remove(adverb)
+            adjectives.remove(adjective)
         else:
-            used_words = []
-            for i in range(quantity):
-                jokes_element = []
-                noun = choice(nouns)
-                while noun in used_words:
-                    noun = choice(nouns)
-                jokes_element.append(noun)
-                used_words.append(noun)
-                adverb = choice(adverbs)
-                while adverb in used_words:
-                    adverb = choice(adverbs)
-                jokes_element.append(adverb)
-                used_words.append(adverb)
-                adjective = choice(adjectives)
-                while adjective in used_words:
-                    adjective = choice(adjectives)
-                jokes_element.append(adjective)
-                used_words.append(adjective)
-                jokes.append(' '.join(jokes_element))
-    print(jokes)
+            return 'Error. Invalid value for "unique". True or False only'
+    return jokes
 
 
-get_jokes_flag(5, True)
+print(get_jokes_flag(5, True))
