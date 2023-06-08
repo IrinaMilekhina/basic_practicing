@@ -15,6 +15,21 @@ num_translate_adv("One")
 num_translate_adv("two")
 "два"
 '''
+# constant income
+eng_ru_0_10_translation = {
+    'zero': 'ноль',
+    'one': 'один',
+    'two': 'два',
+    'three': 'три',
+    'four': 'четыре',
+    'five': 'пять',
+    'six': 'шесть',
+    'seven': 'семь',
+    'eight': 'восемь',
+    'nine': 'девять',
+    'ten': 'десять'
+}
+
 # task 1
 print('FIRST PART'.center(100, '-'), '\n')
 
@@ -24,26 +39,13 @@ def num_translate(number):
     Translates english numbers from 0 to 10 into russian
 
     :param number: number you want to translate. ONLY word form
-    :return: printed translation
+    :return: translation in str
     """
-    translations = {
-        'zero': 'ноль',
-        'one': 'один',
-        'two': 'два',
-        'three': 'три',
-        'four': 'четыре',
-        'five': 'пять',
-        'six': 'шесть',
-        'seven': 'семь',
-        'eight': 'восемь',
-        'nine': 'девять',
-        'ten': 'десять'
-    }
-    print(translations.get(number))
+    return eng_ru_0_10_translation.get(number)
 
 
-num_translate('zero')
-num_translate('eleven')
+print(num_translate('zero'))
+print(num_translate('eleven'))
 
 # task 2
 print('\n', 'SECOND PART'.center(100, '-'))
@@ -51,34 +53,18 @@ print('\n', 'SECOND PART'.center(100, '-'))
 
 def num_translate_adv(number):
     """
-    Translates english numbers from 0 to 10 into russian capitalized of not
+    Translates english numbers from 0 to 10 into russian capitalized or not
 
     :param number: number you want to translate. ONLY word form
-    :return: printed translation
+    :return: translation in str
     """
-    translations = {
-        'zero': 'ноль',
-        'one': 'один',
-        'two': 'два',
-        'three': 'три',
-        'four': 'четыре',
-        'five': 'пять',
-        'six': 'шесть',
-        'seven': 'семь',
-        'eight': 'восемь',
-        'nine': 'девять',
-        'ten': 'десять'
-    }
-    if number.lower() in translations.keys():
-        if number.istitle():
-            print(translations.get(number.lower(), 'None').capitalize())
-        else:
-            print(translations.get(number, 'None'))
+    if number.istitle() and number.lower() in eng_ru_0_10_translation.keys():
+        return eng_ru_0_10_translation.get(number.lower()).capitalize()
     else:
-        print('None')
+        return eng_ru_0_10_translation.get(number)
 
 
-num_translate_adv('one')
-num_translate_adv('Two')
-num_translate_adv('tHree')
-num_translate_adv('twelve')
+print(num_translate_adv('one'))
+print(num_translate_adv('Two'))
+print(num_translate_adv('tHree'))
+print(num_translate_adv('twelve'))
