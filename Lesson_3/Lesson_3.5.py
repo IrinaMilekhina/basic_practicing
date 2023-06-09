@@ -48,21 +48,26 @@ def get_jokes_flag(quantity=1, unique=False):
     :return: list of generated jokes in strings
     """
     jokes = []
+    changeable_noun_list = nouns.copy()
+    changeable_adverb_list = adverbs.copy()
+    changeable_adjective_list = adjectives.copy()
     limit_for_true = len(nouns) + 1
-    for i in range(quantity):
-        noun = choice(nouns)
-        adverb = choice(adverbs)
-        adjective = choice(adjectives)
-        jokes.append(f'{noun} {adverb} {adjective}')
-        if unique is True:
-            if quantity not in range(limit_for_true):
-                return 'Error. There can not be more jokes than elements in list of nouns'
-            nouns.remove(noun)
-            adverbs.remove(adverb)
-            adjectives.remove(adjective)
-        else:
-            return 'Error. Invalid value for "unique". True or False only'
+    if type(unique) is bool:
+        for i in range(quantity):
+            noun = choice(changeable_noun_list)
+            adverb = choice(changeable_adverb_list)
+            adjective = choice(changeable_adjective_list)
+            jokes.append(f'{noun} {adverb} {adjective}')
+            if unique is True:
+                if quantity not in range(limit_for_true):
+                    return 'Error. There can not be more jokes than elements in list of nouns'
+                changeable_noun_list.remove(noun)
+                changeable_adverb_list.remove(adverb)
+                changeable_adjective_list.remove(adjective)
+    else:
+        return 'Error. Invalid value for "unique". True or False only'
     return jokes
 
 
 print(get_jokes_flag(5, True))
+print(get_jokes_flag(3))
