@@ -28,4 +28,12 @@ Summary
     - dictionaries
     - *args, **kwargs
     - module random
+
+- Lesson 4:
+    - virtual environment
+    - pip
+    - modules and packages
+    - import
+    - 'requests' library
+    - modules sys, time, datetime
 ------------------
