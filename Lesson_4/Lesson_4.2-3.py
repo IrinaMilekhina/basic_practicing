@@ -37,9 +37,9 @@ def currency_rates(*currency, date=False):
             all_currencies[code_name] = float(content[value_i].strip('Value').strip('>').strip('</').replace(',', '.'))
     requested_data = []
 # ---optionally uncomment for task 3---
-    # if date is True:
-    #     date_in_response = response.headers.get('Date')
-    #     requested_data.append(f'Request date: {date_in_response}')
+#     if date is True:
+#         date_in_response = ' '.join(response.headers.get('Date').split(' ')[:4])  # dropping out time and time zone info
+#         requested_data.append(f'Request date: {date_in_response}')
     for character_code in currency:
         value = all_currencies.get(character_code.upper())
         if value is None:
