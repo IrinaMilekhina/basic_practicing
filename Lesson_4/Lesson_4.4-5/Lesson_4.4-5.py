@@ -10,8 +10,15 @@ import sys
 
 from utils import currency_rates as smart_af
 
-print(smart_af('Eur', 'gbp', 'OMG', 'USD'))
+print(smart_af('Eur'))
+print(smart_af('LOH'))
+print(smart_af('usd', True))
+print(smart_af('PIDR', True))
 # ---optionally uncomment for task 5 before running this in Terminal---
-# print(smart_af(*sys.argv[1:], date=True))
+# print(smart_af(sys.argv[1], eval(sys.argv[2])))
 
-# I ran this module in PyCharm Terminal with >>> python Lesson_4.4-5.py 'gbp' 'LSD' 'eur' uSd
+# I ran this module in PyCharm Terminal with
+# >>> python Lesson_4.4-5.py gbp 0
+# >>> python Lesson_4.4-5.py Usd 1
+# >>> python Lesson_4.4-5.py LOL False
+# >>> python Lesson_4.4-5.py YOLO True
