@@ -46,4 +46,4 @@ if __name__ == '__main__':
     print(currency_rates('GBP'))
     print(currency_rates('LOH'))
     print(currency_rates('GbP', True))
-    print(currency_rates('PIDR',True))
+    print(currency_rates('PIDR', True))
