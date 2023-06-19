@@ -1,37 +1,32 @@
 from requests import get, utils
 
+from datetime import datetime
 
-def currency_rates(*currency, date=False):
+
+def currency_rates(valuta: str, date_flag=False):
     """
      Gets exchange rate of the requested currency(ies)
 
-    :param currency: international character code
-    :param date: True if date data is needed
-    :return: string(s) with information about the date and/or exchange rate of the requested currency to the
-    ruble (RUB)
+    :param valuta: international character code
+    :param date_flag: True if date data is needed
+    :return: list [date (type date), exchange rate of the requested currency to the RUB (type float)]
     """
     response = get('http://www.cbr.ru/scripts/XML_daily.asp')
     encodings = utils.get_encoding_from_headers(response.headers)
-    content = response.content.decode(encoding=encodings).split('><')[4:]
-    all_currencies = {}
-    index_delta = 3    # разница в индексах между названием валюты и курсом
-    for i, el in enumerate(content):
-        if el.find('CharCode') == 0:
-            code_name = el.strip('CharCode').strip('>').strip('</')
-            value_i = i + index_delta
-            all_currencies[code_name] = float(content[value_i].strip('Value').strip('>').strip('</').replace(',', '.'))
-    requested_data = []
-    if date is True:
-        date_in_response = ' '.join(response.headers.get('Date').split(' ')[:4])  # dropping out time and time zone info
-        requested_data.append(f'Request date: {date_in_response}')
-    for character_code in currency:
-        value = all_currencies.get(character_code.upper())
-        if value is None:
-            requested_data.append(f'{character_code.upper()}: None')
-        else:
-            requested_data.append(f'{character_code.upper()}: {value} RUB')
-    return ';\n'.join(requested_data)
+    content = response.content.decode(encoding=encodings).split('Valute ID=')
+    date, currency = None, None
+    # ----- for task 3 -----
+    if date_flag is True:
+        date = datetime.strptime(content[0].split('"')[-4], '%d.%m.%Y').date()
+    # ----------------------
+    for el in content:
+        if valuta.upper() in el:
+            currency = float(el.split('Value>')[-2].strip('</').replace(',', '.'))
+    return [date, currency]
 
 
 if __name__ == '__main__':
-    print(currency_rates('usd', 'eUr', 'GBP', 'LOH'))
+    print(currency_rates('usd'))
+    print(currency_rates('eUr'))
+    print(currency_rates('GbP', True))
+    print(currency_rates('PIDR', True))
