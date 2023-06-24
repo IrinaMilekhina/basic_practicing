@@ -29,6 +29,7 @@ Summary
     - *args, **kwargs
     - module random
 
+
 - Lesson 4:
     - virtual environment
     - pip
@@ -36,4 +37,9 @@ Summary
     - import
     - 'requests' library
     - modules sys, time, datetime
+
+- Lesson 5:
+    - generator
+    - set, frozen set
+    - comprehensions: list, dictionary, set
 ------------------
