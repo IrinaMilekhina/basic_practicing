@@ -17,17 +17,17 @@ tutors = ['Иван', 'Анастасия', 'Петр', 'Сергей', 'Дми�
 classes = ['9А', '7В', '9Б', '9В', '8Б', '10А', '10Б', '9А']
 
 
-def yolo(names, formations):
+def pair_generator(names, formations):
     for i in range(len(names)):
         if i in range(len(formations)):
-            var = formations[i]
+            klass = formations[i]
         else:
-            var = None
-        yield names[i], var
+            klass = None
+        yield names[i], klass
 
 
-a = yolo(tutors, classes)
-print(type(a))
-for q in tutors:
-    print(next(a))
-# print(next(a))    # returns Stop iteration error
+result = pair_generator(tutors, classes)
+print(type(result))
+for test in tutors:
+    print(next(result))
+# print(next(result))    # returns Stop iteration error
