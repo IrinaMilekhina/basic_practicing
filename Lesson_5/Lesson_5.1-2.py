@@ -22,8 +22,8 @@ def odd_nums(till):
 
 
 odd_to_15 = odd_nums(15)
-for i in odd_to_15:
-    print(i)
+for test in list(odd_nums(15)):
+    print(next(odd_to_15))
 # print(next(odd_to_15))    # returns Stop iteration error
 
 # task 2
@@ -35,6 +35,6 @@ def odd_nums_no_yield(till):
 
 
 odd_to_15_no_yield = odd_nums_no_yield(15)
-for i in odd_to_15_no_yield:
-    print(i)
+for test in list(odd_nums_no_yield(15)):
+    print(next(odd_to_15_no_yield))
 # print(next(odd_to_15_no_yield))    # returns Stop iteration error
