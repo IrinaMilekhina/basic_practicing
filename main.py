@@ -16,8 +16,10 @@
 После выполнения тебе необходимо на гите создать pull request и дать мне ссылку
 """
 import string
+import json
 
 file_name = "in_text.txt"
+json_file_name = 'tale_analysis.json'
 word_count = 0
 word_repeating = {}
 
@@ -33,5 +35,6 @@ with open(file_name, 'r', encoding='utf-8') as tale:
                 word_repeating[word] = 1
             else:
                 word_repeating[word] += 1
-print(f"Words in total: {word_count}")
-print(word_repeating)
+result = f"Words in total: {word_count} \n {word_repeating}"
+with open(json_file_name, 'w', encoding='utf-8') as tale_analysis:
+    json.dump(result, tale_analysis)
