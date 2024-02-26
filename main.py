@@ -4,7 +4,7 @@
 2. Проанализировать данные. Подсчитать сколько слов в тексте, сколько раз встречается каждое слово
 3. Сформировать словарь с результатом анализа вида
 {"word": times[int]}
-4. Сериализовать словать в json формат
+4. Сериализовать словаpь в json формат
 5. Записать результат в json файл
 6. Создать минимум 1 тест на написанный код
 
@@ -15,3 +15,23 @@
 
 После выполнения тебе необходимо на гите создать pull request и дать мне ссылку
 """
+import string
+
+file_name = "in_text.txt"
+word_count = 0
+word_repeating = {}
+
+with open(file_name, 'r', encoding='utf-8') as tale:
+    for line in tale:
+        for punc_mark in string.punctuation:
+            if punc_mark in line:
+                line = line.replace(punc_mark, '').replace('—', '')
+        content = line.lower().split()
+        for word in content:
+            word_count += 1
+            if word not in word_repeating:
+                word_repeating[word] = 1
+            else:
+                word_repeating[word] += 1
+print(f"Words in total: {word_count}")
+print(word_repeating)
