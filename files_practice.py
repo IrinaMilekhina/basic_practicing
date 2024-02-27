@@ -19,3 +19,6 @@
 - обработка новых файлов
 - удаление неактуальных файлов (json есть, а txt нет)
 """
+import os
+
+print(os.listdir(r'/Users/irinamilekhina/python_practice/teaching/basic_practicing'))
