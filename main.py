@@ -35,6 +35,13 @@ with open(file_name, 'r', encoding='utf-8') as tale:
                 word_repeating[word] = 1
             else:
                 word_repeating[word] += 1
-result = f"Words in total: {word_count} \n {word_repeating}"
+print(f"Words in total: {word_count}")
 with open(json_file_name, 'w', encoding='utf-8') as tale_analysis:
-    json.dump(result, tale_analysis)
+    json.dump(word_repeating, tale_analysis)
+
+# testing
+try:
+    with open(json_file_name, 'r') as test:
+        print("Result file exists")
+except FileNotFoundError:
+    print("Result file doesn't exist")
