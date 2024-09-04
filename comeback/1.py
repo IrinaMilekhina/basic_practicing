@@ -19,7 +19,7 @@ MONTHS = {
     '12': 'december'
 }
 
-pattern = re.compile(r"^\d{4}\.[0,1]\d\.[0-3]\d$")
+pattern = re.compile(r'^\d{4}\.[0-12].[0-31]$')
 user_input = str(input('type required date in format YYYY.MM.DD:'))
 if re.fullmatch(pattern, user_input) is None:
     print('Oopsie, wrong format')
