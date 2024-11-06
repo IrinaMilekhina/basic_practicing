@@ -1,0 +1,10 @@
+{
+  "object": "car",
+  "values": {
+    "year": 2006,
+    "color": "red",
+    "model": "abracadabra",
+    "brand": "mercedes",
+    "crashed": true
+  }
+}

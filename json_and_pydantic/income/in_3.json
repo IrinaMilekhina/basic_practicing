@@ -1,0 +1,14 @@
+{
+  "object": "car",
+  "values": {
+    "yr": 2006,
+    "color": "null",
+    "model": null,
+    "brand": 111,
+    "crashed": true,
+    "unexpected_value": {
+      "u_1": 12345,
+      "u_2": null
+    }
+  }
+}
