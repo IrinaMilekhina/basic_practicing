@@ -4,24 +4,25 @@ from typing import Optional
 class Car:
     """Information about cars"""
 
-    def init(self, color: str, brand: str, model: str, не_бита: Optional[bool] = True, не_крашена: Optional[
-        bool] = True):
+    def __init__(self, color: str, brand: str, model: str, no_accidents: Optional[bool] = True,
+                 no_repainting: Optional[bool] = True):
         self.color = color
         self.brand = brand
         self.model = model
-        self.не_бита = не_бита
-        self.не_крашена = не_крашена
+        self.no_accidents = no_accidents
+        self.no_repainting = no_repainting
 
     def accident(self):
-        self.не_бита = False
-        self.не_крашена = False
+        self.no_accidents = False
+        self.no_repainting = False
 
     def characteristics(self):
-        print(f'Color: {self.color}, Brand: {self.brand}, Model: {self.model}\n \
-        Additional: не бита - {self.не_бита}, не крашена - {self.не_крашена}')
+        print(f'Color: {self.color}, Brand: {self.brand}, Model: {self.model}\n\
+        Additional: no accidents - {self.no_accidents}, no repainting - {self.no_repainting}\n')
 
 
 ###
+# car_1 = Car(color='blue', brand='Volvo', model='Cx3')
 car_1 = Car('blue', 'Volvo', 'Cx3')
 car_2 = Car('red', 'BMW', 'MF14')
 
